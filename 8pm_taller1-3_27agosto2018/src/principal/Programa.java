@@ -67,8 +67,7 @@ public class Programa {
             muestraCadena(cadena2);
         }else{
             System.out.println("Las cadenas son iguales");
-        }
-     
+        }     
     }
     
     private static void muestraCadena(String cadena) {
