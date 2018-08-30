@@ -85,7 +85,7 @@ public class Programa {
     }
 
     public static void item5() {
-        int[] nums = {4,3};
+        int[] nums = {1,2,1,2,3};
         
         /*
         ordenaAscendentemente(nums);
@@ -141,12 +141,14 @@ public class Programa {
     private static int getPosicionRepeticionMayor(int[] arregloRepeticiones) {
         int posiMayor = 0;
         
+        //Busco el mayor en el arreglo de repeticiones
         for (int i = 0; i < arregloRepeticiones.length - 1; i++) {
             if(arregloRepeticiones[i+1] > arregloRepeticiones[posiMayor]) {
                 posiMayor = i + 1;                
             }
         }
         
+        //valido que las repeticiones de ese mayor no coincidan con las de otro numero
         for (int i = 0; i < arregloRepeticiones.length; i++) {
             if(arregloRepeticiones[i] == arregloRepeticiones[posiMayor] && i != posiMayor) {
                 posiMayor = -1;
