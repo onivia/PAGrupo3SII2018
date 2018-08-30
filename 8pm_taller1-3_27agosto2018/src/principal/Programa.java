@@ -6,7 +6,8 @@ public class Programa {
     public static void main(String[] args) {
         //item1();
         //item2();
-        item3(); //sergio medina-27agosto2018
+        //item3(); //sergio medina-27agosto2018
+        item5();        
     }
     
     public static void item1() {
@@ -81,5 +82,80 @@ public class Programa {
         String cadena2 = "";
         
                 
+    }
+
+    public static void item5() {
+        int[] nums = {6,5,6,5,3};
+        
+        /*
+        ordenaAscendentemente(nums);
+        System.out.println(Arrays.toString(nums));
+        System.out.println("el mayor es: " + nums[nums.length - 1]);        
+        System.out.println("el menor es: " + nums[0]);
+        */
+        int numMasRepetido = getNumeroMasRepetido(nums);
+        
+        if(numMasRepetido != -1)
+            System.out.println("El numero mas repetido es: " + numMasRepetido);
+        else
+            System.out.println("no hay repetidos o es INDETERMINADO");
+    }
+    
+    private static int getNumeroMasRepetido(int[] arreglo) {
+        //1. obtener un arreglo con las repeticiones
+            //{2,4,2,1,2,2} - {3,0,2,0,1,0} 
+        //2. obtener la posicion de la repeticion mayor en el arreglo de repeticiones,
+        // para luego obtener en el arreglo original el valor que mas se repite.
+        /*
+        {1,0,1,0} -> -1 indeterminado
+        {0,0} -> -1 no hay repeticiones
+        {0,2,1} -> 1
+        {0} -> 0
+        {2} -> 0
+        */       
+        
+        int numMasRepetido = 0;
+        int[] arregloRepeticiones = getArregloRepeticiones(arreglo);
+        int posiMasRepetido = getPosicionRepeticionMayor(arregloRepeticiones);       
+        
+        if(posiMasRepetido >= 0)
+            numMasRepetido = arreglo[posiMasRepetido];
+        
+        return posiMasRepetido;        
+    }
+    
+    private static int[] getArregloRepeticiones(int[] arreglo) {
+        int[] arregloRepeticiones = new int[arreglo.length];
+        
+        for (int i = 0; i < arreglo.length - 1; i++) {
+            for (int j = (i+1); j < arreglo.length; j++) {
+                if(arreglo[i] == arreglo[j]) {
+                    arregloRepeticiones[i]++;                    
+                }                
+            }            
+        }
+
+        return arregloRepeticiones;
+    }
+    
+    private static int getPosicionRepeticionMayor(int[] arregloRepeticiones) {
+        return 0;        
+    }
+    
+    private static void ordenaAscendentemente(int[] arreglo) {
+        boolean huboIntercambio = true;
+        int aux = 0;
+        
+        while(huboIntercambio) {
+            huboIntercambio = false;
+            for (int i = 0; i < arreglo.length - 1; i++) {
+                if(arreglo[i] > arreglo[i+1]) {
+                    aux = arreglo[i+1];
+                    arreglo[i+1] = arreglo[i];
+                    arreglo[i] = aux;
+                    huboIntercambio = true;
+                }                
+            }                        
+        }
     }
 }
