@@ -85,7 +85,7 @@ public class Programa {
     }
 
     public static void item5() {
-        int[] nums = {6,5,6,5,3};
+        int[] nums = {4,3};
         
         /*
         ordenaAscendentemente(nums);
@@ -114,14 +114,14 @@ public class Programa {
         {2} -> 0
         */       
         
-        int numMasRepetido = 0;
+        int numMasRepetido = -1;
         int[] arregloRepeticiones = getArregloRepeticiones(arreglo);
         int posiMasRepetido = getPosicionRepeticionMayor(arregloRepeticiones);       
         
         if(posiMasRepetido >= 0)
             numMasRepetido = arreglo[posiMasRepetido];
         
-        return posiMasRepetido;        
+        return numMasRepetido;        
     }
     
     private static int[] getArregloRepeticiones(int[] arreglo) {
@@ -139,7 +139,22 @@ public class Programa {
     }
     
     private static int getPosicionRepeticionMayor(int[] arregloRepeticiones) {
-        return 0;        
+        int posiMayor = 0;
+        
+        for (int i = 0; i < arregloRepeticiones.length - 1; i++) {
+            if(arregloRepeticiones[i+1] > arregloRepeticiones[posiMayor]) {
+                posiMayor = i + 1;                
+            }
+        }
+        
+        for (int i = 0; i < arregloRepeticiones.length; i++) {
+            if(arregloRepeticiones[i] == arregloRepeticiones[posiMayor] && i != posiMayor) {
+                posiMayor = -1;
+                break;
+            }                
+        }
+        
+        return posiMayor;
     }
     
     private static void ordenaAscendentemente(int[] arreglo) {
