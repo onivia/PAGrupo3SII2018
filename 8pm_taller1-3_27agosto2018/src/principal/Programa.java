@@ -1,13 +1,16 @@
 package principal;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Programa {
     public static void main(String[] args) {
         //item1();
         //item2();
         //item3(); //sergio medina-27agosto2018
-        item5();        
+        //item5();        
+        //item6();
+        item8();
     }
     
     public static void item1() {
@@ -99,6 +102,106 @@ public class Programa {
             System.out.println("El numero mas repetido es: " + numMasRepetido);
         else
             System.out.println("no hay repetidos o es INDETERMINADO");
+    }
+    
+    public static void item6() {
+        //[3,7]
+        //dif = 4
+        //A(5) -> idesde + 4 = 7
+        int idesde = 3;
+        int ihasta = 7;
+        int diferenciaRango = 0;
+        
+        Random numAleatorioDiferencia = new Random();
+        diferenciaRango = ihasta - idesde;
+        int numAleatorioRango = idesde + numAleatorioDiferencia.nextInt(diferenciaRango + 1);
+        
+        System.out.println(numAleatorioRango);
+    }
+    
+    public static void item8() {
+        //bottom-top drive
+        
+        String[] contrasenas = generarContrasenasValidas(5);
+        
+        System.out.println(Arrays.toString(contrasenas));        
+    }
+    
+    private static String[] generarContrasenasValidas(int cantContrasenas) {
+        String[] simbolos ={"a","e","i","o","u","b","c","d","f","g","0","1","2","3","4","_","*","+","%"};
+        String[] contrasenas = new String[cantContrasenas];
+        String contrasena = "";
+        
+        int i = 0;
+        while(i < contrasenas.length) {
+            contrasena = generarContrasenaValida(simbolos, cantContrasenas);
+            if(!estaRepetidaContrasena(contrasenas, contrasena)) {
+                contrasenas[i] = contrasena;
+                i++;                                                
+            }
+        }
+        
+        return contrasenas;
+    }
+    
+    private static boolean estaRepetidaContrasena(String[] contrasenas, String contrasena) {
+        boolean estaRepetida = false;
+        
+        for (int i = 0; i < contrasenas.length; i++) {
+            if(contrasenas[i] != null && contrasenas[i].equals(contrasena)) {
+                estaRepetida = true;
+                break;                
+            }                
+        }
+        
+        return estaRepetida;        
+    }
+    
+    private static String generarContrasenaValida(String[] simbolos, int longContrasena) {
+        //{"a","e","i","o","u","b","c","d","f","g","0","1","2,"3","4","_","*","+","%"}        
+        String[] contrasena = new String[longContrasena];
+        String resultado = "";
+        
+        
+        contrasena[0] = simbolos[getAleatorio(0, 15)];
+        
+        int i = 1;
+        while(i < longContrasena) {
+            contrasena[i] = simbolos[getAleatorio(0, 18)];
+        
+            if(valideRepeticionesSimbolo(contrasena, contrasena[i], 2)) {
+                i++;
+            }
+        }
+        
+        for (int j = 0; j < contrasena.length; j++)
+            resultado += contrasena[j]; //resultado = resultado + contrasena[j];
+        
+        return resultado;
+    }
+    
+    private static boolean valideRepeticionesSimbolo(String[] contrasena, String simbolo, int cantMaxRepeticiones) {
+        int cantRepeticionesSimbolo = 0;
+        boolean esValidaRepeticiones = false;
+        
+        for (int i = 0; i < contrasena.length; i++) {
+            if(contrasena[i] != null && contrasena[i].equals(simbolo))
+                cantRepeticionesSimbolo++;
+        }
+        
+        esValidaRepeticiones = (cantRepeticionesSimbolo > 1) ? false : true;        
+        
+        return esValidaRepeticiones;
+    }
+    
+    private static int getAleatorio(int desde, int hasta) {        
+        int diferenciaRango = 0;
+        
+        Random numAleatorioDiferencia = new Random();
+        diferenciaRango = hasta - desde;
+        int numAleatorioRango = desde + numAleatorioDiferencia.nextInt(diferenciaRango + 1);        
+        
+        return numAleatorioRango;
     }
     
     private static int getNumeroMasRepetido(int[] arreglo) {
