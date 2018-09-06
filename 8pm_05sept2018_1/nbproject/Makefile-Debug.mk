@@ -36,7 +36,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/main2.o
+	${OBJECTDIR}/main2.o \
+	${OBJECTDIR}/main3.o
 
 
 # C Compiler Flags
@@ -70,6 +71,10 @@ ${OBJECTDIR}/main.o: main.cpp nbproject/Makefile-${CND_CONF}.mk
 ${OBJECTDIR}/main2.o: main2.cpp nbproject/Makefile-${CND_CONF}.mk
 	${MKDIR} -p ${OBJECTDIR}
 	$(COMPILE.cc) -g -o ${OBJECTDIR}/main2.o main2.cpp
+
+${OBJECTDIR}/main3.o: main3.cpp nbproject/Makefile-${CND_CONF}.mk
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE.cc) -g -o ${OBJECTDIR}/main3.o main3.cpp
 
 # Subprojects
 .build-subprojects:
