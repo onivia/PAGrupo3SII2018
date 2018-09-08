@@ -38,6 +38,24 @@ string obtieneLineaArchivo(string fullpatharchivo) {
     return linea;
 }
 
+void ordenaxSeleccion(int arreglo[], int tamanoArreglo) {
+    int posiMenor = 0;
+    int aux = 0;
+    
+    for(int i=0;i<tamanoArreglo-1;i++) {
+        posiMenor = i;
+        for(int j=(i+1);j<tamanoArreglo;j++) {
+            if(arreglo[j]<arreglo[posiMenor]) {
+                posiMenor = j;
+            }            
+        }
+        //hacer intercambio
+        aux = arreglo[i];
+        arreglo[i] = arreglo[posiMenor];
+        arreglo[posiMenor] = aux;
+    }
+}
+
 void convierteNumerosyOrdena(string linea, string separador) {
     string lineaaux = linea;
     string snumero = "";
@@ -59,27 +77,13 @@ void convierteNumerosyOrdena(string linea, string separador) {
        nums[j++] = atoi(snumero.c_str());
     }
     
-    bool huboIntercambio = true;
-    int aux = 0;
-    int i = 0;
-    while(huboIntercambio) {
-        huboIntercambio = false;
-        for(int i=0;i<(j-1);i++) {
-            if(nums[i]>nums[i+1]) {
-                aux = nums[i+1];
-                nums[i+1] = nums[i];
-                nums[i] = aux;
-                huboIntercambio = true;
-            }
-        }
-    }
     
-    for(i=0;i<j;i++) {
-        cout<<nums[i]<<endl;        
-    }
+    //1. llamar al metodo que ordena
+    //2. mostrar el arreglo, ya debe mostrarse de manera ordenada
+    
 }
 
-int main2() {
+int main() {
     
     //escribirArchivo();
     //leerArchivo();

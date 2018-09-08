@@ -9,7 +9,7 @@ void f2(int arr[]) {
     arr[0] = arr[0] + 1;
 }
 
-int main() {
+int main3() {
     int var1 = 10;
     int var2[1] = {20};
     
