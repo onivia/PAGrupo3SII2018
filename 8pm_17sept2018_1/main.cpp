@@ -1,29 +1,32 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 
-int sumar(int n1, int n2) {
-    return (n1+n2);
-}
-
-int restar(int n1, int n2) {
-    return (n1-n2);
-}
-
-int operacion(int (*pf)(int,int),int n1, int n2) {
-    int resultado = 0;
-
-    resultado = pf(n1,n2);
-    
-    return resultado;
-}
+struct Producto {
+    int codigo;
+    char color[16];
+    double precio;
+};
 
 int main() {    
-    int r = 0;
-    int (*wrapper[])(int,int) = {restar,sumar};    
+    Producto *productos = NULL;
+    productos = (Producto *)malloc(2*sizeof(Producto)); //new
     
-    r = operacion(wrapper[0],50,20);    
+    productos[0].codigo = 100;
+    productos[0].precio = 550;
+    strcpy(productos[0].color,"NEGRO");
     
-    cout<<r<<endl;
+    productos[1].codigo = 200;
+    productos[1].precio = 9560;
+    strcpy(productos[1].color,"AZUL");
+    
+    for(int i=0;i<2;i++) {
+        if(productos[i].codigo==100) {
+            cout<<productos[i].codigo<<endl;
+            cout<<productos[i].precio<<endl;
+            cout<<productos[i].color<<endl;
+        }
+    }
 
     return 0;
 }
