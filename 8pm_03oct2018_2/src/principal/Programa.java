@@ -22,4 +22,14 @@ public class Programa {
     private static void liquidarTercero(Tercero tercero) {
         tercero.liquidar();
     }
+    
+    private static void calcularRteFte(IRteFte objRteFte) {
+        objRteFte.calcularRteFte();
+        //aqui mete mas codigo que tenga que ver con calcularRteFte
+    }
+    
+    private static void notificar(INotificable objnotificable) {
+        objnotificable.notificar();
+    }
 }
+

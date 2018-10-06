@@ -4,7 +4,7 @@ package principal;
  *
  * @author ONivia
  */
-public class Cliente extends Tercero {
+public class Cliente extends Tercero implements INotificable {
     public Cliente() {
         super();
     }
@@ -16,5 +16,10 @@ public class Cliente extends Tercero {
     @Override
     public void liquidar() {
         System.out.println("liquidar en Cliente");
+    }
+
+    @Override
+    public void notificar() {
+        System.out.println("se notifico al Cliente");
     }
 }
