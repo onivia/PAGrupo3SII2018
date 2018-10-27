@@ -1,6 +1,7 @@
 
 package principal;
 
+import base.Cola;
 import base.MiLista;
 import base.Nodo;
 
@@ -10,7 +11,8 @@ import base.Nodo;
  */
 public class Programa {
     public static void main(String[] args) {
-        pruebaMiLista();
+        //pruebaMiLista();
+        pruebaCola();
     }
     
     private static void pruebaMiLista() {
@@ -19,11 +21,25 @@ public class Programa {
 //        lista.insertarNodoxPosicion(new Nodo(8),1);
 //        lista.insertarNodoxPosicion(new Nodo(6),2);
 //        lista.insertarNodoxPosicion(new Nodo(4),3);
-        lista.adicionar(new Nodo(2));
-        lista.adicionar(new Nodo(8));
+//        lista.adicionar(new Nodo(2));
+//        lista.adicionar(new Nodo(8));
+//        lista.adicionar(new Nodo(6));
+//        
+//        //lista.insertarPrimero(new Nodo(4));                          
+//        //System.out.println(lista.obteneryRemoverPrimero().dato);
+//        
+//        lista.obteneryRemoverPrimero();
+//        lista.recorrerLista();
+    }
+
+    private static void pruebaCola() {
+        Cola cola = new Cola();
+        cola.encolar(new Nodo(8));
+        cola.encolar(new Nodo(4));
+        cola.encolar(new Nodo(2));
         
-        lista.removerPrimerNodo();
-        
-        lista.recorrerLista();
+        cola.desencolar();
+        cola.desencolar();
+        System.out.println(cola.obtener().dato);
     }
 }

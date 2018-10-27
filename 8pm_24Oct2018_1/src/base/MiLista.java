@@ -20,7 +20,7 @@ public class MiLista {
         return (p==null && u==null);
     }
 	
-    public Nodo obtenerNodoxPosicion(int posi) {
+    Nodo obtenerNodoxPosicion(int posi) {
         Nodo nodoAux = null;
         
         if(posi>=0 && posi<tamano) {
@@ -36,7 +36,7 @@ public class MiLista {
         return nodoAux;
     }
 	
-    public void insertarNodoxPosicion(Nodo nodo, int posi) {
+    void insertarNodoxPosicion(Nodo nodo, int posi) {
         if(estaVacia() && posi==0) { //esta vacia
             p = nodo;
             u = nodo;
@@ -62,11 +62,11 @@ public class MiLista {
         }            
     }
 
-    public void adicionar(Nodo nodo) {
+    void adicionar(Nodo nodo) {
         insertarNodoxPosicion(nodo, tamano);
     }
     
-    public void removerPrimerNodo() {
+    void removerPrimerNodo() {
         if(!estaVacia()) {
             if(tamano==1) { //voy a remover el unico nodo de la lista, la lista kedara vacia
                 p = null;
@@ -80,13 +80,23 @@ public class MiLista {
             tamano -= 1;
         }        
     }
-
-    public Nodo obtenerPrimero() {
-        return null;      
+    
+    void insertarPrimero(Nodo nodo) {
+        insertarNodoxPosicion(nodo, 0);
     }
     
-    public Nodo obteneryRemoverPrimero() {       
-        return null;        
+    Nodo obtenerPrimero() {
+        return (obtenerNodoxPosicion(0));
+    }
+    
+    Nodo obteneryRemoverPrimero() {
+        Nodo nodoCopia = null;
+        
+        if(!estaVacia()) {
+            nodoCopia = new Nodo(obtenerPrimero().dato);
+            removerPrimerNodo();
+        }
+        return nodoCopia;        
     }
     
     public void recorrerLista() {
